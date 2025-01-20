@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import pkg from 'pg';
 import env from "dotenv";
-import { WebSocketServer } from "ws";
+import WebSocket from "ws";
 import http from "http";
 
 env.config();
@@ -36,7 +36,7 @@ app.use(cors(corsOptions));
 
 // WebSocket Setup
 const server = http.createServer(app);
-const wss = new WebSocketServer({ server });
+const wss = new WebSocket.Server({ server });
 
 wss.on('connection', (ws) => {
     console.log('WebSocket connection established');
